@@ -1,4 +1,5 @@
 ﻿using Coldsteel;
+using LD34.Screens;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -9,12 +10,12 @@ namespace LD34
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class LD34Game : Game
     {
         GraphicsDeviceManager _graphics;
         ScreenManager _screenManager;
 
-        public Game1()
+        public LD34Game()
         {
             _graphics = new GraphicsDeviceManager(this);
             _graphics.PreferredBackBufferWidth = 1280;
@@ -22,8 +23,8 @@ namespace LD34
 
             _screenManager = new ScreenManager(this);
             _screenManager.BackgroundColor = Color.CornflowerBlue;
+            _screenManager.AddScreen(new MainMenuScreen());
             this.Components.Add(_screenManager);
-
 
             Content.RootDirectory = "Content";
         }
@@ -35,7 +36,7 @@ namespace LD34
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (var game = new LD34Game())
                 game.Run();
         }
 #endif
