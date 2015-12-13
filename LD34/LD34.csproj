@@ -42,10 +42,28 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Gameplay\GameplayStage.cs" />
+    <Compile Include="Gameplay\Asteroid.cs" />
+    <Compile Include="Gameplay\Direction.cs" />
+    <Compile Include="Gameplay\GameBoard.cs" />
+    <Compile Include="Gameplay\GameBoardSlot.cs" />
+    <Compile Include="Gameplay\GameBoardTextures.cs" />
+    <Compile Include="Gameplay\HudConsole.cs" />
+    <Compile Include="Gameplay\RotateBoardBehavior.cs" />
+    <Compile Include="Gameplay\Selector.cs" />
+    <Compile Include="Stages\GameplayStage.cs" />
+    <Compile Include="Gameplay\MoveToBehavior.cs" />
+    <Compile Include="Gameplay\PlayerInputController.cs" />
+    <Compile Include="Gameplay\Ship.cs" />
+    <Compile Include="Gameplay\Star.cs" />
+    <Compile Include="Gameplay\StarFieldRenderer.cs" />
+    <Compile Include="Gameplay\StarFieldShifter.cs" />
+    <Compile Include="Gameplay\TextRenderer.cs" />
+    <Compile Include="Gameplay\IGamePiece.cs" />
     <Compile Include="LD34Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\MainMenuScreen.cs" />
+    <Compile Include="Stages\HudStage.cs" />
+    <Compile Include="Stages\StarFieldStage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -55,6 +73,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Sprites\asteroid.png" />
+    <Content Include="Content\Sprites\cursor.png" />
+    <Content Include="Content\Sprites\dot.png" />
+    <Content Include="Content\Sprites\font.png" />
+    <Content Include="Content\Sprites\grid.png" />
+    <Content Include="Content\Sprites\planet.png" />
+    <Content Include="Content\Sprites\select.png" />
+    <Content Include="Content\Sprites\ship.png" />
+    <Content Include="Content\Sprites\star.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -68,8 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Content\ConsoleSpriteFont.spritefont" />
-    <None Include="Content\MenuSpriteFont.spritefont" />
+    <None Include="Content\SpriteFonts\ConsoleSpriteFont.spritefont" />
+    <None Include="Content\SpriteFonts\MenuSpriteFont.spritefont" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

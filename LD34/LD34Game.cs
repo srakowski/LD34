@@ -1,5 +1,7 @@
 ﻿using Coldsteel;
+using LD34.Gameplay;
 using LD34.Screens;
+using LD34.Stages;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -21,9 +23,12 @@ namespace LD34
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 720;
 
-            _screenManager = new ScreenManager(this);
-            _screenManager.BackgroundColor = Color.CornflowerBlue;
-            _screenManager.AddScreen(new MainMenuScreen());
+            _screenManager = new ScreenManager(this, _graphics);
+            _screenManager.EnableConsole("SpriteFonts/ConsoleSpriteFont");
+            //_screenManager.EnableMouseCursor("Sprites/cursor");
+
+            _screenManager.BackgroundColor = Color.Black;
+            _screenManager.AddScreen(new GameStageScreen(new GameplayStage()));
             this.Components.Add(_screenManager);
 
             Content.RootDirectory = "Content";

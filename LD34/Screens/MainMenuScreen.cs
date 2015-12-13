@@ -12,7 +12,7 @@ namespace LD34.Screens
     class MainMenuScreen : MenuScreen
     {
         public MainMenuScreen()
-            : base("LD341", "MenuSpriteFont")
+            : base("LD34", "SpriteFonts/MenuSpriteFont")
         {
             var play = new MenuEntry("Play");
             play.Selected += Play_Selected;
@@ -25,12 +25,11 @@ namespace LD34.Screens
 
         private void Play_Selected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.LoadScreen(this.ScreenManager,
-                new GameStageScreen(new GameplayStage()));
         }
 
         private void Exit_Selected(object sender, PlayerIndexEventArgs e)
         {
+            ScreenManager.Exit();            
         }
     }
 }
