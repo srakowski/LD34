@@ -32,9 +32,9 @@ namespace LD34.Gameplay
                 return;
 
             _prevLeftDown = _leftDown;
-            _leftDown = input.KeyDown(Keys.Left);
+            _leftDown = input.KeyDown(Keys.Left) || input.KeyDown(Keys.A) || input._currentMouseState.LeftButton == ButtonState.Pressed;
             _prevRightDown = _rightDown;
-            _rightDown = input.KeyDown(Keys.Right);
+            _rightDown = input.KeyDown(Keys.Right) || input.KeyDown(Keys.D) || input._currentMouseState.RightButton == ButtonState.Pressed;
 
             if (_leftDown && _prevLeftDown && _prevRightDown && !_rightDown)
             {
