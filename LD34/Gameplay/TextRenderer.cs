@@ -15,11 +15,16 @@ namespace LD34.Gameplay
 
         private Dictionary<char, Rectangle> _destinationRectangles;
 
+        public bool Throb { get; internal set; } = false;
+
+        private byte _a = 255;
+        private sbyte _dir = -5;
+
         public string Text
         {
             get { return _text; }
             set { _text = value; }
-        }
+        }        
 
         private Texture2D _fontTexture;
 
@@ -35,20 +40,27 @@ namespace LD34.Gameplay
             for (var c = 'A'; c <= 'Z'; c++)
                 _destinationRectangles[c] = new Rectangle(10 * (c - 'A'), 18, 10, 18);
 
-            char[] others = new char[] { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', ',', '?', '>', '<', ':' };
+            char[] others = new char[] { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', ',', '?', '>', '<', ':', '[', ']', '-' };
             for (var i = 0; i < others.Length; i++)
                 _destinationRectangles[others[i]] = new Rectangle(10 * i, 36, 10, 18);
         }
 
         public override void Draw(GameTime gt, SpriteBatch sb)
         {
+            if (Throb)
+            {
+                _a = (byte)(_a + _dir);
+                if (_a == 0 || _a == 255)
+                    _dir *= -1;
+            }
+
             for (var i = 0; i < Text.Length; i++)
             {
                 var c = Text[i];
                 sb.Draw(_fontTexture,
                     this.GameObject.Transform.Position + new Vector2(i * 10, 0),
                     GetDestinationRectangle(c),
-                    new Color(150,150,150), 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+                    new Color(150,150,150, _a), 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
             }
         }
 

@@ -10,6 +10,8 @@ namespace LD34.Gameplay
 {
     class Selector : GameObject
     {
+        //public Point SelectedTilePoint { get { } }
+
         public int _selected;
 
         public Selector()
@@ -20,30 +22,12 @@ namespace LD34.Gameplay
 
         public void SelectLeft(Vector2 shipPos, Action sel, Action onAct)
         {
-            if (_selected >= 0)
-            {
-                _selected--;
-                MoveCursor(shipPos);
-                sel.Invoke();
-            }
-            else
-            {
-                onAct.Invoke();
-            }
+            onAct.Invoke();
         }
 
         public void SelectRight(Vector2 shipPos, Action sel, Action onAct)
         {
-            if (_selected <= 0)
-            {
-                _selected++;
-                MoveCursor(shipPos);
-                sel.Invoke();
-            }
-            else
-            {
-                onAct.Invoke();
-            }
+            onAct.Invoke();
         }
 
         private void MoveCursor(Vector2 shipPos)

@@ -22,9 +22,11 @@ namespace LD34.Gameplay
 
         private StarFieldRenderer _sfr;
 
+        private Action _done;
+
         public RotateBoardBehavior(GameObject obj, Vector2 origin,
             List<LineRenderer> lineRenderers, GameBoardSlot[,] slots,
-            StarFieldRenderer sfr, int dir) 
+            StarFieldRenderer sfr, int dir, Action done) 
             : base(obj)
         {
             _origin = origin;
@@ -33,6 +35,7 @@ namespace LD34.Gameplay
             _dir = dir;
             _val = 0;
             _sfr = sfr;
+            _done = done;
         }
 
         public override void Update(GameTime gameTime)
@@ -44,14 +47,20 @@ namespace LD34.Gameplay
                     Matrix.Identity * Matrix.CreateRotationZ(MathHelper.ToRadians(_dir)));
 
             foreach (var s in _slots)
-                s.occupant?.Transform.Rotate(_origin, Matrix.Identity * Matrix.CreateRotationZ(MathHelper.ToRadians(_dir)));
+            {
+                s.RotatePos(_origin, Matrix.Identity * Matrix.CreateRotationZ(MathHelper.ToRadians(_dir)));
+                s.UpdateOccupantPos();
+            }
 
             _sfr.RotateStars(new Vector2(this.GameObject.ScreenManager.GraphicsDevice.Viewport.Width * 0.5f,
                 this.GameObject.ScreenManager.GraphicsDevice.Viewport.Height * 0.5f), 
-                Matrix.Identity * Matrix.CreateRotationZ(MathHelper.ToRadians(_dir)));
+                Matrix.Identity * Matrix.CreateRotationZ(MathHelper.ToRadians(_dir)));            
 
             if (Math.Abs(_val) == 90)
+            {
                 this.Behaviors.Remove(this);
+                _done?.Invoke();
+            }
         }
     }
 }

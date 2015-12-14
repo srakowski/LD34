@@ -43,13 +43,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Gameplay\Asteroid.cs" />
+    <Compile Include="Gameplay\BaseGamePiece.cs" />
     <Compile Include="Gameplay\Direction.cs" />
+    <Compile Include="Gameplay\FinalPlanet.cs" />
     <Compile Include="Gameplay\GameBoard.cs" />
     <Compile Include="Gameplay\GameBoardSlot.cs" />
     <Compile Include="Gameplay\GameBoardTextures.cs" />
+    <Compile Include="Gameplay\GameProgressManager.cs" />
+    <Compile Include="Gameplay\GOBehv.cs" />
     <Compile Include="Gameplay\HudConsole.cs" />
+    <Compile Include="Gameplay\JumpGate.cs" />
+    <Compile Include="Gameplay\PeaceKeepingShip.cs" />
+    <Compile Include="Gameplay\Pirate.cs" />
+    <Compile Include="Gameplay\Planet.cs" />
+    <Compile Include="Gameplay\PlayerSelectBehavior.cs" />
     <Compile Include="Gameplay\RotateBoardBehavior.cs" />
     <Compile Include="Gameplay\Selector.cs" />
+    <Compile Include="Gameplay\ShipState.cs" />
+    <Compile Include="Gameplay\TextUpdBehavior.cs" />
+    <Compile Include="Gameplay\TradeOutputStation.cs" />
+    <Compile Include="Gameplay\TurnBasedBehavior.cs" />
+    <Compile Include="Stages\DefeatStage.cs" />
     <Compile Include="Stages\GameplayStage.cs" />
     <Compile Include="Gameplay\MoveToBehavior.cs" />
     <Compile Include="Gameplay\PlayerInputController.cs" />
@@ -64,6 +78,8 @@
     <Compile Include="Screens\MainMenuScreen.cs" />
     <Compile Include="Stages\HudStage.cs" />
     <Compile Include="Stages\StarFieldStage.cs" />
+    <Compile Include="Stages\TitleStage.cs" />
+    <Compile Include="Stages\VictoryStage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -73,15 +89,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Audio\convert.wav" />
+    <Content Include="Content\Audio\expload.wav" />
+    <Content Include="Content\Audio\jump.wav" />
+    <Content Include="Content\Audio\shiphit.wav" />
     <Content Include="Content\Sprites\asteroid.png" />
     <Content Include="Content\Sprites\cursor.png" />
     <Content Include="Content\Sprites\dot.png" />
     <Content Include="Content\Sprites\font.png" />
     <Content Include="Content\Sprites\grid.png" />
+    <Content Include="Content\Sprites\jumpgate.png" />
+    <Content Include="Content\Sprites\pirate.png" />
+    <Content Include="Content\Sprites\pk_ship1.png" />
     <Content Include="Content\Sprites\planet.png" />
     <Content Include="Content\Sprites\select.png" />
     <Content Include="Content\Sprites\ship.png" />
     <Content Include="Content\Sprites\star.png" />
+    <Content Include="Content\Sprites\station.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

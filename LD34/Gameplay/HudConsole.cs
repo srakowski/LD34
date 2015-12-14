@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework;
 
 namespace LD34.Gameplay
 {
-    class HudConsole : GameObject
+    public class HudConsole : GameObject
     {
         private const int LINES = 10;
 
@@ -38,16 +38,17 @@ namespace LD34.Gameplay
 
         public void Log(string text)
         {            
-            if (_pos != 0)
+            if (_pos >= 0)
             {                
                 _lines[_pos].Text = text;
                 _pos--;
             }
             else
             {
-                for (var i = 0; i < _lines.Length - 1; i++)
-                    _lines[i].Text = _lines[i + 1].Text;
-                _lines[_pos].Text = text;
+                for (var i = _lines.Length - 1; i > 0; i--)
+                    _lines[i].Text = _lines[i - 1].Text;
+
+                _lines[0].Text = text;
             }
         }
     }

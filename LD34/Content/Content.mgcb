@@ -42,7 +42,7 @@
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:Sprites/cursor.png
@@ -53,7 +53,7 @@
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:Sprites/star.png
@@ -64,7 +64,7 @@
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:Sprites/planet.png
@@ -75,7 +75,7 @@
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:Sprites/font.png
@@ -97,7 +97,7 @@
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:Sprites/asteroid.png
@@ -119,8 +119,76 @@
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:Sprites/select.png
+
+#begin Sprites/jumpgate.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/jumpgate.png
+
+#begin Sprites/pk_ship1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/pk_ship1.png
+
+#begin Sprites/station.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/station.png
+
+#begin Sprites/pirate.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Sprites/pirate.png
+
+#begin Audio/convert.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/convert.wav
+
+#begin Audio/expload.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/expload.wav
+
+#begin Audio/jump.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/jump.wav
+
+#begin Audio/shiphit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/shiphit.wav
 

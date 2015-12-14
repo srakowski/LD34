@@ -17,6 +17,13 @@ namespace LD34.Stages
 
         Texture2D _fontTexture;
 
+        private GameProgressManager _progress;
+
+        public HudStage(GameProgressManager progress) : base()
+        {
+            _progress = progress;
+        }
+
         public override void LoadContent(ContentManager content)
         {
             _fontTexture = content.Load<Texture2D>("Sprites/font");
@@ -28,27 +35,37 @@ namespace LD34.Stages
             this.AddGameObject(this.HudConsole);
             this.HudConsole.InitializeHud();
 
+            var fuelStateGO = new GameObject();
+            var fsRend = new TextRenderer(fuelStateGO, _fontTexture);
+            fuelStateGO.Renderer = fsRend;
+            fuelStateGO.Transform.Position += new Vector2(142, ScreenManager.GraphicsDevice.Viewport.Height - 20);
+            fuelStateGO.Behaviors.Add(new TextUpdBehavior(fuelStateGO, _progress,
+                new Func<GameProgressManager, string>((prog) => "Fuel: " + _progress.ShipState.FuelUnits.ToString() )));
+            this.AddGameObject(fuelStateGO);
 
+            var hullStateGO = new GameObject();
+            var hullRend = new TextRenderer(hullStateGO, _fontTexture);
+            hullStateGO.Renderer = hullRend;
+            hullStateGO.Transform.Position += new Vector2(2, ScreenManager.GraphicsDevice.Viewport.Height - 20);
+            hullStateGO.Behaviors.Add(new TextUpdBehavior(hullStateGO, _progress,
+                new Func<GameProgressManager, string>((prog) => "Hull: " + _progress.ShipState.HullUnits.ToString())));
+            this.AddGameObject(hullStateGO);
 
-            //var backDropGO = new GameObject();
-            //backDropGO.Renderer = new RectangleRenderer(backDropGO,
-            //    ScreenManager.GraphicsDevice,
-            //    new Rectangle(0, 0, 400, ScreenManager.GraphicsDevice.Viewport.Height),
-            //    new Color(25, 25, 25));
-            //this.AddGameObject(backDropGO);
+            var _mStateGO = new GameObject();
+            var _mRend = new TextRenderer(_mStateGO, _fontTexture);
+            _mStateGO.Renderer = _mRend;
+            _mStateGO.Transform.Position += new Vector2(282, ScreenManager.GraphicsDevice.Viewport.Height - 20);
+            _mStateGO.Behaviors.Add(new TextUpdBehavior(_mStateGO, _progress,
+                new Func<GameProgressManager, string>((prog) => "Metals: " + _progress.ShipState.MetalFragments.ToString())));
+            this.AddGameObject(_mStateGO);
 
-            //var dividerGO = new GameObject();
-            //var divRenderer = new LineRenderer(dividerGO, ScreenManager.GraphicsDevice);
-            //divRenderer.AddVector(new Vector2(401, 0));
-            //divRenderer.AddVector(new Vector2(401, ScreenManager.GraphicsDevice.Viewport.Height));
-            //divRenderer.Color = Color.DarkGray;
-            //dividerGO.Renderer = divRenderer;
-            //this.AddGameObject(dividerGO);
-
-
-
-
-
+            var _organicsGO = new GameObject();
+            var _oRend = new TextRenderer(_organicsGO, _fontTexture);
+            _organicsGO.Renderer = _oRend;
+            _organicsGO.Transform.Position += new Vector2(422, ScreenManager.GraphicsDevice.Viewport.Height - 20);
+            _organicsGO.Behaviors.Add(new TextUpdBehavior(_organicsGO, _progress,
+                new Func<GameProgressManager, string>((prog) => "Organics: " + _progress.ShipState.Organics.ToString())));
+            this.AddGameObject(_organicsGO);
         }
     }
 }

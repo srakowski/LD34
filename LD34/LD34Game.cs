@@ -28,7 +28,7 @@ namespace LD34
             //_screenManager.EnableMouseCursor("Sprites/cursor");
 
             _screenManager.BackgroundColor = Color.Black;
-            _screenManager.AddScreen(new GameStageScreen(new GameplayStage()));
+            _screenManager.AddScreen(new GameStageScreen(new TitleStage()));
             this.Components.Add(_screenManager);
 
             Content.RootDirectory = "Content";

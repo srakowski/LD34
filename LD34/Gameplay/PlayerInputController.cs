@@ -13,6 +13,14 @@ namespace LD34.Gameplay
     {
         private GameBoard _gameBoard;
 
+        private bool _secondaryPerformed = false;
+
+        private bool _prevLeftDown = false;
+        private bool _leftDown = false;        
+
+        private bool _prevRightDown = false;
+        private bool _rightDown = false;
+
         public PlayerInputController(GameObject obj, GameBoard gameBoard) : base(obj)
         {
             this._gameBoard = gameBoard;
@@ -20,24 +28,50 @@ namespace LD34.Gameplay
 
         public override void HandleInput(InputState input)
         {
-            PlayerIndex pIdx;
+            if (_gameBoard.TurnState != TurnState.PLAYER)
+                return;
 
-            if (input.KeyDown(Keys.Left) && input.KeyPressed(Keys.Right, out pIdx))
+            _prevLeftDown = _leftDown;
+            _leftDown = input.KeyDown(Keys.Left);
+            _prevRightDown = _rightDown;
+            _rightDown = input.KeyDown(Keys.Right);
+
+            if (_leftDown && _prevLeftDown && _prevRightDown && !_rightDown)
             {
                 _gameBoard.ActionBoth(Direction.LEFT);
+                _secondaryPerformed = true;
+                return;
             }
-            else if (input.KeyDown(Keys.Right) && input.KeyPressed(Keys.Left, out pIdx))
+
+            if (_rightDown && _prevRightDown && _prevLeftDown && !_leftDown)
             {
                 _gameBoard.ActionBoth(Direction.RIGHT);
+                _secondaryPerformed = true;
+                return;
             }
-            else if (input.KeyPressed(Keys.Left, out pIdx))
+
+            if (_prevLeftDown && !_leftDown && !_secondaryPerformed)
             {
                 _gameBoard.ActionLeft();
+                return;
             }
-            else if (input.KeyPressed(Keys.Right, out pIdx))
+            else if (_prevLeftDown && !_leftDown && _secondaryPerformed)
+            {
+                _secondaryPerformed = false;
+                return;
+            }
+          
+            if (_prevRightDown && !_rightDown && !_secondaryPerformed)
             {
                 _gameBoard.ActionRight();
+                return;
+            }
+            else if (_prevRightDown && !_rightDown && _secondaryPerformed)
+            {
+                _secondaryPerformed = false;
+                return;
             }
         }
+
     }
 }

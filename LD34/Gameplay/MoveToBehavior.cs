@@ -10,6 +10,8 @@ namespace LD34.Gameplay
 {
     class MoveToBehavior : Behavior
     {
+        public Action OnMoveCompleted { get; set; } = null;
+
         private Vector2 _moveTo = Vector2.Zero;
 
         private bool _rotate;
@@ -27,7 +29,7 @@ namespace LD34.Gameplay
 
         public override void Update(GameTime gameTime)
         {
-            if (Vector2.Distance(this.Transform.Position, _moveTo) > this.RigidBody.velocity.Length() + 1)
+            if (Vector2.Distance(this.Transform.Position, _moveTo) > this.RigidBody.velocity.Length() + 10)
                 return;
 
             this.Transform.Position = _moveTo;
@@ -35,6 +37,8 @@ namespace LD34.Gameplay
             this.Behaviors.Remove(this);
             if (this._rotate)
                 this.Transform.Rotation = 0f;
+
+            OnMoveCompleted?.Invoke();
         }
     }
 }
